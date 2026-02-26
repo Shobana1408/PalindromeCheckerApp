@@ -1,24 +1,22 @@
 import java.util.*;
 
 public class PalindromeCheckerApp {
+    private static boolean check(String s, int start, int end){
+        if (start>=end){
+            return true;
+        }
+        if (s.charAt(start)!=s.charAt(end)){
+            return false;
+        }
+        return check(s, start+1, end-1);
+    }
     public static void main(String[] args){
-       Scanner text = new Scanner(System.in);
+       Scanner input = new Scanner(System.in);
        System.out.print("Input : ");
-       String input = text.nextLine();
-       LinkedList<Character> list = new LinkedList<>();
-       for (char c : input.toCharArray()){
-           list.add(c);
-       }
-       boolean isPalindrome = true;
-       while (list.size() > 1){
-           if (list.getFirst()!=list.getLast()){
-               isPalindrome = false;
-               break;
-           }
-           list.removeFirst();
-           list.removeLast();
-           isPalindrome = true;
-       }
-       System.out.print("Is Palindrome? : "+isPalindrome);
+       String s = input.nextLine();
+       int start = 0;
+       int end = s.length()-1;
+       boolean res = check(s, start, end);
+       System.out.print("Is Palindrome? : "+res);
     }
 }
