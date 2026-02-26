@@ -1,25 +1,29 @@
 import java.util.*;
 class PalindromeCheckerApp{
+    public boolean checkPalindrome(String input){
+        int start = 0;
+        int end = input.length() - 1;
+        boolean isPalindrome = true;
+        while(start<end){
+            if (input.charAt(start)==input.charAt(end)){
+                isPalindrome=true;
+                start++;
+                end--;
+            }
+            else{
+                isPalindrome = false;
+                break;
+            }
+        }
+        return isPalindrome;
+    }
     public static void main(String[] args){
        Scanner input = new Scanner(System.in);
        System.out.print("Input : ");
        String sentence = input.nextLine();
-       String text="";
-       for (int i=0; i<sentence.length(); i++) {
-           if (sentence.charAt(i)!=' ') {
-               text += Character.toLowerCase(sentence.charAt(i));
-           }
-       }
-       System.out.println(text);
-        String ab="";
-        String ba="";
-        for (int i=0; i<=text.length()/2; i++){
-            ab= ab+ text.charAt(i);
-        }
-        for (int i=text.length()-1; i>=text.length()/2; i--){
-            ba= ba+ text.charAt(i);
-        }
-        System.out.println(ab+"  "+ba);
-        System.out.print("Is Palindrome? : "+(ab.equals(ba)));
+       PalindromeCheckerApp obj = new PalindromeCheckerApp();
+       boolean res = obj.checkPalindrome(sentence);
+       System.out.print("Is Palindrome? : "+res);
+       input.close();
     }
 }
