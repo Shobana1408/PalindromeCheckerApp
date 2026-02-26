@@ -5,18 +5,18 @@ public class PalindromeCheckerApp {
        Scanner text = new Scanner(System.in);
        System.out.print("Input : ");
        String input = text.nextLine();
-       Deque<Character> deque = new ArrayDeque<>();
+       LinkedList<Character> list = new LinkedList<>();
        for (char c : input.toCharArray()){
-           deque.add(c);
+           list.add(c);
        }
        boolean isPalindrome = true;
-       while (deque.size() > 1){
-           char front = deque.removeFirst();
-           char rear = deque.removeLast();
-           if (front!=rear){
-               isPalindrome=false;
+       while (list.size() > 1){
+           if (list.getFirst()!=list.getLast()){
+               isPalindrome = false;
                break;
            }
+           list.removeFirst();
+           list.removeLast();
            isPalindrome = true;
        }
        System.out.print("Is Palindrome? : "+isPalindrome);
