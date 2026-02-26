@@ -1,22 +1,25 @@
 import java.util.*;
-
-public class PalindromeCheckerApp {
-    private static boolean check(String s, int start, int end){
-        if (start>=end){
-            return true;
-        }
-        if (s.charAt(start)!=s.charAt(end)){
-            return false;
-        }
-        return check(s, start+1, end-1);
-    }
+class PalindromeCheckerApp{
     public static void main(String[] args){
        Scanner input = new Scanner(System.in);
        System.out.print("Input : ");
-       String s = input.nextLine();
-       int start = 0;
-       int end = s.length()-1;
-       boolean res = check(s, start, end);
-       System.out.print("Is Palindrome? : "+res);
+       String sentence = input.nextLine();
+       String text="";
+       for (int i=0; i<sentence.length(); i++) {
+           if (sentence.charAt(i)!=' ') {
+               text += Character.toLowerCase(sentence.charAt(i));
+           }
+       }
+       System.out.println(text);
+        String ab="";
+        String ba="";
+        for (int i=0; i<=text.length()/2; i++){
+            ab= ab+ text.charAt(i);
+        }
+        for (int i=text.length()-1; i>=text.length()/2; i--){
+            ba= ba+ text.charAt(i);
+        }
+        System.out.println(ab+"  "+ba);
+        System.out.print("Is Palindrome? : "+(ab.equals(ba)));
     }
 }
